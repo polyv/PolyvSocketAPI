@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PolyvSocketAPI"
-  s.version      = "0.2.0"
-  s.summary      = "Polyv Socket 相关接口（聊天室、连麦、云课堂、互动课堂）."
+  s.version      = "0.2.1"
+  s.summary      = "Polyv iOS 直播观看、推流、聊天室相关接口."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
