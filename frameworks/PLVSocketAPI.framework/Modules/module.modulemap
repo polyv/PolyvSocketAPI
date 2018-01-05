@@ -1,0 +1,6 @@
+framework module PLVSocketAPI {
+  umbrella header "PLVSocketAPI.h"
+
+  export *
+  module * { export * }
+}
