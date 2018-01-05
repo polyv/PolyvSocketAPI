@@ -134,6 +134,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Socket.IO-Client-Swift", "12.0"
+  s.dependency "Socket.IO-Client-Swift", "~>12.1.1"   # 使用13.0之前版本，前一版本目前为 12.1.3
 
 end
