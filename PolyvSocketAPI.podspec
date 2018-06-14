@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   # s.description  = <<-DESC
                    # DESC
 
-  s.homepage     = "https://github.com/Zeaa/PolyvSocketAPI"
+  s.homepage     = "https://github.com/polyv/PolyvSocketAPI"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Zeaa/PolyvSocketAPI.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/polyv/PolyvSocketAPI.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
