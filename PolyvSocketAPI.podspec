@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "PolyvSocketAPI"
-  s.version      = "0.3.0"
+  s.version      = "0.4.0"
   s.summary      = "Polyv iOS 直播观看、推流、聊天室相关接口."
 
   # This description is used to generate tags and improve search results.
@@ -134,6 +134,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Socket.IO-Client-Swift", "~>12.1.1"   # 使用13.0之前版本，前一版本目前为 12.1.3
+  s.dependency "Socket.IO-Client-Swift", "~>13.2.0"
 
 end

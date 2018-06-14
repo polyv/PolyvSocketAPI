@@ -16,7 +16,7 @@ extern NSString *const PLVSocketObjectDefaultUserPic;
 /// SocketIO 事件对象类型
 typedef NS_ENUM(NSUInteger, PLVSocketObjectType) {
     /// 聊天室对象
-    PLVSocketObjectTypeChatRoom = 0,
+    PLVSocketObjectTypeChatRoom = 1,
     /// 连麦对象
     PLVSocketObjectTypeLinkMic,
     /// 云课堂对象

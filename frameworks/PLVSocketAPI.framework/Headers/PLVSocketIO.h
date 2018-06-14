@@ -40,6 +40,11 @@ typedef NS_ENUM(NSInteger, PLVSocketIOState) {
 @property (nonatomic, strong, readonly) NSString *socketId;
 /// socketIO 连接状态
 @property (nonatomic, assign, readonly) PLVSocketIOState socketIOState;
+/// 房间号/频道号
+@property (nonatomic, assign, readonly) NSUInteger roomId;
+/// 用户Id（由PLVSocketObjec登录对象生成）
+@property (nonatomic, assign, readonly) NSUInteger userId;
+
 /// debug模式
 @property (nonatomic, assign) BOOL debugMode;
 
