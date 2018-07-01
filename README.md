@@ -58,7 +58,7 @@ end
 - Socket.IO-Client-Swift ~ 13.2.1
 - Starscream ~ 3.0.5 
 
-直接下载：[0.4.0](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.4.0+180614.zip.zip)
+直接下载：[0.4.0](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.4.0+180614.zip)
 
 CocoaPods： `pod 'PolyvSocketAPI', '~> 0.4.0'`
 
