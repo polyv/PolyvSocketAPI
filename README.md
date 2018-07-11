@@ -1,8 +1,8 @@
 # PolyvSocketAPI
 
-当前版本：0.4.0
+当前版本：0.4.1
 
- `pod 'PolyvSocketAPI', '~> 0.4.0'`
+ `pod 'PolyvSocketAPI', '~> 0.4.1'`
 
 依赖库版本：
 - Socket.IO-Client-Swift ~ 13.2
@@ -48,7 +48,13 @@ end
 
 ## 历史版本
 
-### v0.4.0
+### 0.4.1+180630
+
+- 修复连麦时提交数据格式不正确的问题
+
+直接下载：[0.4.1+180630](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.4.1+180630.zip)
+
+### 0.4.0+180614
 
 - 升级 socket.io 库至 13.2 版本
 - PLVSocketIO 类新增 userId、roomId 属性
@@ -62,7 +68,7 @@ end
 
 CocoaPods： `pod 'PolyvSocketAPI', '~> 0.4.0'`
 
-### v0.3.0
+### 0.3.0
 
 `#import <PLVSocketAPI/PLVSocketAPI.h>`
 
@@ -75,7 +81,7 @@ CocoaPods： `pod 'PolyvSocketAPI', '~> 0.4.0'`
 
 CocoaPods： `pod 'PolyvSocketAPI', '~> 0.3.0'`
 
-###  v0.2.1 
+###  0.2.1 
 
 `#import <PLVChatManager/PLVChatManager.h>`
 
