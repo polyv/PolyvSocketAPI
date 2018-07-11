@@ -52,7 +52,7 @@ end
 
 - 修复连麦时提交数据格式不正确的问题
 
-直接下载：[0.4.1+180630](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.4.1+180630.zip)
+直接下载：[0.4.1+180630](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.4.1+180630_2.zip)
 
 ### 0.4.0+180614
 
