@@ -12,10 +12,6 @@
  - Socket.IO-Client-Swift '~>13.2.0'
    - Starscream ~ 3.0
 
-### 手动下载
-
- - 在 历史版本 中找到 `PolyvSocketAPI` 版本和对应依赖库版本下载
-
 ### 导入头文件
 
 `#import <PLVSocketAPI/PLVSocketAPI.h>`
@@ -45,6 +41,19 @@ post_install do |installer|
     end
 end
 ```
+
+### 手动下载
+
+ - 在下表中找到对应的 Socket.IO 和 Starscream 版本手动下载
+    - 将 SocketIO.framework 、Starscream.framework 库添加至项目的 `Embeded Binaries`中
+    - 设置 `Build Settings` -> `Always Embed Swift Standard Libraries` 为 `YES
+- 如果集成中出现 ` Reason: image not found：` 错误，可检查版本是否对应，包括 Swift 版本
+- 或者可以直接下载 [Socket.IO 源码](https://github.com/socketio/socket.io-client-swift/releases)（包含项目)，找到对应版本，手动在自己编译器上进行编译调试。
+
+| Swift version\framework |                           SocketIO                           |                          Starscream                          | PolyvSocketAPI |
+| :---------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------: |
+|    4.0.3 / Xcode 9.2    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
+|   4.1.2/ Xcode 9.4.1    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/swift4.1.2_SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/swift4.1.2_Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
 
 ## 历史版本
 
