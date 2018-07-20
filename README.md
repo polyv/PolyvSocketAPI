@@ -47,8 +47,8 @@ end
  - 在下表中找到对应的 Socket.IO 和 Starscream 版本手动下载
     - 将 SocketIO.framework 、Starscream.framework 库添加至项目的 `Embeded Binaries`中
     - 设置 `Build Settings` -> `Always Embed Swift Standard Libraries` 为 `YES
-- 如果集成中出现 ` Reason: image not found：` 错误，可检查版本是否对应，包括 Swift 版本
-- 或者可以直接下载 [Socket.IO 源码](https://github.com/socketio/socket.io-client-swift/releases)（包含项目)，找到对应版本，手动在自己编译器上进行编译调试。
+- 如果集成中出现 ` Reason: image not found：` 错误，可检查是否 Swift 版本问题
+- 或者直接下载 [Socket.IO 源码](https://github.com/socketio/socket.io-client-swift/releases)（包含项目)，手动在自己编译器上进行编译调试
 
 | Swift version\framework |                           SocketIO                           |                          Starscream                          | PolyvSocketAPI |
 | :---------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------: |
