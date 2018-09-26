@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "PLVSocketObject.h"
-#import "PLVSocketChatRoomObject.h"
-#import "PLVSocketLinkMicObject.h"
-#import "PLVSocketPPTObject.h"
-#import "PLVSocketClassObject.h"
 
 /// socketIO 连接状态
 typedef NS_ENUM(NSInteger, PLVSocketIOState) {
@@ -27,23 +23,88 @@ typedef NS_ENUM(NSInteger, PLVSocketIOState) {
     PLVSocketIOStateConnectError = 4,
 };
 
-@protocol PLVSocketIODelegate;
+/// 用户状态
+typedef NS_ENUM(NSInteger, PLVSocketUserState) {
+    /// 用户未登录
+    PLVSocketUserStateNotLogin = 0,
+    /// 用户退出登录
+    PLVSocketUserStateLogout = 1,
+    /// 用户登录中
+    PLVSocketUserStateLogining = 2,
+    /// 用户登录成功
+    PLVSocketUserStateLogined = 3,
+    /// 用户登录失败
+    PLVSocketUserStateLoginError = 4,
+};
+
+NSString *PLVNameStringWithSocketUserState(PLVSocketUserState userState);
+
+@class PLVSocketIO;
+
+/**
+ PLVSocketIO 代理回调消息
+ */
+@protocol PLVSocketIODelegate <NSObject>
+
+@required
+/** SocketIO 连接服务器成功*/
+- (void)socketIO:(PLVSocketIO *)socketIO didConnectWithInfo:(NSString *)info;
+
+@optional
+/** SocketIO 用户状态改变*/
+- (void)socketIO:(PLVSocketIO *)socketIO didUserStateChange:(PLVSocketUserState)userState;
+
+/** SocketIO 收到聊天室（公聊）消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceivePublicChatMessage:(PLVSocketChatRoomObject *)chatObject;
+/** SocketIO 收到聊天室（私聊）消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceivePrivateChatMessage:(PLVSocketChatRoomObject *)chatObject;
+/** SocketIO 收到连麦消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveLinkMicMessage:(PLVSocketLinkMicObject *)linkMicObject;
+/** SocketIO 收到云课堂消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceivePPTMessage:(PLVSocketPPTObject *)pptObject;
+/** SocketIO 收到互动课堂消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveClassMessage:(PLVSocketClassObject *)classObject;
+
+/** SocketIO 收到答题卡问题信息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveQuestionContent:(NSString *)json;
+/** SocketIO 收到答题卡答案信息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveQuestionResult:(NSString *)json;
+
+/** SocketIO 和服务器失去连接*/
+- (void)socketIO:(PLVSocketIO *)socketIO didDisconnectWithInfo:(NSString *)info;
+/** SocketIO 连接服务器出错*/
+- (void)socketIO:(PLVSocketIO *)socketIO connectOnErrorWithInfo:(NSString *)info;
+/** SocketIO 重新连接服务器*/
+- (void)socketIO:(PLVSocketIO *)socketIO reconnectWithInfo:(NSString *)info;
+
+/** 本地出错信息回调*/
+- (void)socketIO:(PLVSocketIO *)socketIO localError:(NSString *)description;
+
+#pragma mark Deprecated
+/** SocketIO 收到聊天室消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveChatMessage:(PLVSocketChatRoomObject *)chatObject;
+
+@end
 
 /**
  SocketIO 对象
  */
 @interface PLVSocketIO : NSObject
 
-/// SocketIO 代理人
+/// SocketIO 代理对象
 @property (nonatomic, weak) id <PLVSocketIODelegate> delegate;
 /// Socket id
 @property (nonatomic, strong, readonly) NSString *socketId;
-/// socketIO 连接状态
-@property (nonatomic, assign, readonly) PLVSocketIOState socketIOState;
 /// 房间号/频道号
 @property (nonatomic, assign, readonly) NSUInteger roomId;
 /// 用户Id（由PLVSocketObjec登录对象生成）
-@property (nonatomic, assign, readonly) NSUInteger userId;
+@property (nonatomic, strong, readonly) NSString *userId;
+/// Socket 用户信息
+@property (nonatomic, strong, readonly) PLVSocketObject *user;
+/// socketIO 连接状态
+@property (nonatomic, assign, readonly) PLVSocketIOState socketIOState;
+/// socketIO 用户状态
+@property (nonatomic, assign, readonly) PLVSocketUserState userState;
 
 /// debug模式
 @property (nonatomic, assign) BOOL debugMode;
@@ -91,41 +152,5 @@ typedef NS_ENUM(NSInteger, PLVSocketIOState) {
  @param dictContent 字典数据内容
  */
 - (void)emitEvent:(NSString *)event withContent:(NSDictionary *)dictContent;
-
-@end
-
-/**
- SocketIO 代理消息
- */
-@protocol PLVSocketIODelegate <NSObject>
-
-@required
-/** SocketIO 连接服务器成功*/
-- (void)socketIO:(PLVSocketIO *)socketIO didConnectWithInfo:(NSString *)info;
-
-@optional
-/** SocketIO 收到聊天室消息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceiveChatMessage:(PLVSocketChatRoomObject *)chatObject;
-
-/** SocketIO 收到连麦消息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceiveLinkMicMessage:(PLVSocketLinkMicObject *)linkMicObject;
-
-/** SocketIO 收到云课堂消息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceivePPTMessage:(PLVSocketPPTObject *)pptObject;
-
-/** SocketIO 收到互动课堂消息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceiveClassMessage:(PLVSocketClassObject *)classObject;
-
-/** SocketIO 和服务器失去连接*/
-- (void)socketIO:(PLVSocketIO *)socketIO didDisconnectWithInfo:(NSString *)info;
-
-/** SocketIO 连接服务器出错*/
-- (void)socketIO:(PLVSocketIO *)socketIO connectOnErrorWithInfo:(NSString *)info;
-
-/** SocketIO 重新连接服务器*/
-- (void)socketIO:(PLVSocketIO *)socketIO reconnectWithInfo:(NSString *)info;
-
-/** 本地出错信息回调*/
-- (void)socketIO:(PLVSocketIO *)socketIO localError:(NSString *)description;
 
 @end

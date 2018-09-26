@@ -54,6 +54,16 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_LOGOUT_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_LOGOUT_uid; /* 离开人的uid */
 
 /*!
+ @constant    PLVSocketIOChatRoom_SET_NICK_EVENT
+ @abstract    昵称设置，设置的昵称存在时间为5个小时
+ */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_SET_NICK_EVENT;
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_SET_NICK_message; /* 消息内容 */
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_SET_NICK_status; /* 设置状态 */
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_SET_NICK_nick; /* 设置昵称 */
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_SET_NICK_userId; /* 用户Id */
+
+/*!
  @constant    PLVSocketIOChatRoom_GONGGAO_EVENT
  @abstract    公告消息，如有公告，登录房间的时候服务器会广播这一消息，公告即为管理员的发言信息
  */
@@ -199,26 +209,6 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_CHATROOM_CONTROL_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_CHATROOM_CONTROL_value; /* NSNumber(BOOL)，YES 为开启；NO 为关闭 */
 
 #pragma mark 聊天室问答消息
-
-/*!
- @constant    PLVSocketIOChatRoom_S_QUESTION_EVENT
- @abstract    学生在观看端发起提问
- */
-PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_EVENT;
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_roomId; /* NSNumber, 房间号 */
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_content; /* 提问内容 */
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_userKey; /* NSDictionary，提问学生相关信息，可以参看 PLVSocketIOChatRoomUserKey 字典属性内容*/
-
-/*!
- @constant    PLVSocketIOChatRoom_T_ANSWER_EVENT
- @abstract    老师回答学生的提问
- */
-PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_EVENT;
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_roomId; /* NSNumber, 房间号 */
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_content; /* 回答内容 */
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_sUserId; /* 提问学生userId */
-    PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_userKey; /* NSDictionary，讲师信息，可以参看 PLVSocketIOChatRoomUserKey 字典属性内容 */
-
 /*!
  @constant    PLVSocketIOChatRoom_QUESTION_EVENT
  @abstract    老师在客户端发起问答，参考：http://dev.polyv.net/2016/08/clientchat/ 2.3问答功能
@@ -253,6 +243,28 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_roomId; /* NSNumber, 房间号 */
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_image; /* 消息图片(根据发送的消息是否有图片决定) */
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_content; /* 消息内容 */
+
+
+#pragma mark 聊天室私聊消息
+
+/*!
+ @constant    PLVSocketIOChatRoom_S_QUESTION_EVENT
+ @abstract    学生在观看端发起提问
+ */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_EVENT;
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_roomId; /* NSNumber, 房间号 */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_content; /* 提问内容 */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_S_QUESTION_userKey; /* NSDictionary，提问学生相关信息，可以参看 PLVSocketIOChatRoomUserKey 字典属性内容*/
+
+/*!
+ @constant    PLVSocketIOChatRoom_T_ANSWER_EVENT
+ @abstract    老师回答学生的提问
+ */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_EVENT;
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_roomId; /* NSNumber, 房间号 */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_content; /* 回答内容 */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_sUserId; /* 提问学生userId */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_userKey; /* NSDictionary，讲师信息，可以参看 PLVSocketIOChatRoomUserKey 字典属性内容 */
 
 #pragma mark - 连麦事件键集合
 
@@ -387,4 +399,13 @@ PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_key;
     PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_type; /* muteAllAudio(全体静音)、muteAllVideo(全体下麦)、muteUserAudio(静音某个学员)、muteUserVideo(下麦某个学员) */
     PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_isMuted; /* BOOL: true(静音/下麦)、false(恢复静音/上麦) */
     PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_userId; /* Optional, 学员id */
+
+#pragma mark - 答题卡事件键集合
+/*!
+ @constant    PLVSocketIOClass_onTriviaCard_key
+ @abstract    答题卡事件
+ */
+PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_key;
+    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionContent;
+    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionResult;
 
