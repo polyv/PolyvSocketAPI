@@ -4,7 +4,7 @@
 
 ### 版本信息
 
- - 最新版本：0.4.1
+ - 最新版本：0.5.0
  - 初始化接口后会在控制台输出，搜索关键字 `PLVSocketAPI version`
 
 依赖库版本：
@@ -24,7 +24,7 @@ platform :ios, "8.0"
 use_frameworks!
 
 target 'YourApp' do
-    pod 'PolyvSocketAPI', '~> 0.4.1'
+    pod 'PolyvSocketAPI', '~> 0.5.0'
 end
 
 ```
@@ -56,6 +56,18 @@ end
 |   4.1.2/ Xcode 9.4.1    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/swift4.1.2_SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/swift4.1.2_Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
 
 ## 历史版本
+
+### 0.5.0+180912
+
+- 新增 “昵称设置” 事件及消息对象
+
+- 新增 “用户登录状态” 属性及状态改变回调
+
+- 聊天室回调区分公聊和私聊方法
+
+- 移除冗余 SocketObject 类文件，添加至 PLVSocketObject 类中
+
+  直接下载：[PLVSocketAPI_0.5.0+180912](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.5.0+180912.zip)
 
 ### 0.4.1+180630
 
