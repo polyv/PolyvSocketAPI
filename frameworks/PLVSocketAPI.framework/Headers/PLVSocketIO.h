@@ -60,15 +60,15 @@ NSString *PLVNameStringWithSocketUserState(PLVSocketUserState userState);
 - (void)socketIO:(PLVSocketIO *)socketIO didReceivePrivateChatMessage:(PLVSocketChatRoomObject *)chatObject;
 /** SocketIO 收到连麦消息*/
 - (void)socketIO:(PLVSocketIO *)socketIO didReceiveLinkMicMessage:(PLVSocketLinkMicObject *)linkMicObject;
-/** SocketIO 收到云课堂消息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceivePPTMessage:(PLVSocketPPTObject *)pptObject;
+
 /** SocketIO 收到互动课堂消息*/
 - (void)socketIO:(PLVSocketIO *)socketIO didReceiveClassMessage:(PLVSocketClassObject *)classObject;
 
-/** SocketIO 收到答题卡问题信息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceiveQuestionContent:(NSString *)json;
-/** SocketIO 收到答题卡答案信息*/
-- (void)socketIO:(PLVSocketIO *)socketIO didReceiveQuestionResult:(NSString *)json;
+/** SocketIO 收到云课堂消息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceivePPTMessage:(NSString *)json;
+
+/** SocketIO 收到答题卡问题 或 答案 信息*/
+- (void)socketIO:(PLVSocketIO *)socketIO didReceiveQuestionMessage:(NSString *)json result:(int)result;
 
 /** SocketIO 和服务器失去连接*/
 - (void)socketIO:(PLVSocketIO *)socketIO didDisconnectWithInfo:(NSString *)info;

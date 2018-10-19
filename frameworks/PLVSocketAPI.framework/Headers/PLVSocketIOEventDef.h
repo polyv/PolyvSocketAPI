@@ -408,4 +408,5 @@ PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_key;
 PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_key;
     PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionContent;
     PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionResult;
+    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_about;
 

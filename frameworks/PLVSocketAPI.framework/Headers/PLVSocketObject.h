@@ -80,12 +80,24 @@ NSString *NameStringWithSocketObjectUserType(PLVSocketObjectUserType userType);
  生成一个登录对象
  
  @param roomId 房间号/频道号
- @param nickName 用户昵称，为空或教师角色时使用默认昵称
- @param avatar 用户头像，为空时使用默认头像
+ @param nickName 自定义用户昵称，存在默认值，如nil参数 用户昵称，为空或教师角色时使用默认昵称
+ @param avatar 自定义用户头像，存在默认值，如nil参数。HTTP或者HTTPS协议，建议使用HTTPS
  @param userType 用户类型：普通直播观看端使用 TypeStudent；云课堂直播观看端使用 TypeSlice；推流登录使用 TypeTeacher
- @return PLVSocketObject 的登录对象
+ @return PLVSocketObject
  */
 + (instancetype)socketObjectForLoginEventWithRoomId:(NSUInteger)roomId nickName:(NSString *)nickName avatar:(NSString *)avatar userType:(PLVSocketObjectUserType)userType;
+
+/**
+ 生成一个登录对象（普通直播观看端）
+
+ @param roomId 房间号/频道号
+ @param nickName 自定义用户昵称，存在默认值，如nil参数
+ @param avatar 自定义用户头像，存在默认值，如nil参数。HTTP或者HTTPS协议，建议使用HTTPS
+ @param userId 自定义用户Id，存在默认值，如nil参数。建议使用默认生成
+ @param authorization 自定义授权参数，参数为 nil时，不会携带此参数。支持键参数：actor、bgColor、fColor。
+ @return PLVSocketObject
+ */
++ (instancetype)socketObjectForLoginEventWithRoomId:(NSUInteger)roomId nickName:(NSString *)nickName avatar:(NSString *)avatar userId:(NSString *)userId authorization:(NSDictionary *)authorization;
 
 /**
  便利初始化方法，使用子类调用
@@ -106,15 +118,15 @@ NSString *NameStringWithSocketObjectUserType(PLVSocketObjectUserType userType);
 
 /// 聊天室事件
 typedef NS_ENUM(NSUInteger, PLVSocketChatRoomEventType) {
-    /// 登录消息，登录房间的时候服务器会广播这一消息
+    /// 登录消息，登录房间时服务器会广播这一消息
     PLVSocketChatRoomEventType_LOGIN            = 0,
     /// 退出消息，断开连接服务器广播的消息
     PLVSocketChatRoomEventType_LOGOUT           = 1,
-    /// 公告消息，如有公告，登录房间的时候服务器会广播这一消息，公告即为管理员的发言信息
+    /// 文字滚动跑马灯，如存在（管理员发言信息），登录时服务器会返回这一消息
     PLVSocketChatRoomEventType_GONGGAO          = 2,
     /// 公告消息，POLYV 后台聊天室管理中，发布公告的内容
     PLVSocketChatRoomEventType_BULLETIN         = 3,
-    /// 发言，接收别人的发言消息和严禁词消息(不包括自己)
+    /// 发言，接收别人的发言消息和严禁词消息(开启聊天室审核后也会受到自己的发言消息)
     PLVSocketChatRoomEventType_SPEAK            = 4,
     /// 昵称设置
     PLVSocketChatRoomEventType_SET_NICK         = 5,
@@ -167,8 +179,11 @@ typedef NS_ENUM(NSUInteger, PLVSocketChatRoomEventType) {
     /// 自定义消息接收事件，目前只能通过后台管理员调用HTTP接口发送消息，可参考http://dev.polyv.net/2016/12/send-chat/
     PLVSocketChatRoomEventType_CUSTOMER_MESSAGE = 26,
     
+    /// 发送图片事件
+    PLVSocketChatRoomEventType_CHAT_IMG         = 27,
+    
     /// 其他事件
-    PLVSocketChatRoomEventType_ELSE             = 27
+    PLVSocketChatRoomEventType_ELSE
 };
 
 /**
@@ -256,7 +271,6 @@ typedef NS_ENUM(NSUInteger, PLVSocketLinkMicEventType) {
 
 /// 消息/事件类型
 @property (nonatomic, assign) PLVSocketLinkMicEventType eventType;
-
 
 /**
  生成一个连麦事件对象
