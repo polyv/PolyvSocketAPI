@@ -4,7 +4,7 @@
 
 ### 版本信息
 
- - 最新版本：0.6.0
+ - 最新版本：0.6.1
  - 初始化接口后会在控制台输出，搜索关键字 `PLVSocketAPI version`
 
 依赖库版本：
@@ -56,6 +56,10 @@ end
 |   4.1.2/ Xcode 9.4.1    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/swift4.1.2_SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/swift4.1.2_Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
 
 ## 历史版本
+
+### 0.6.1+190508
+
+- 支持 Bitcode
 
 ### 0.6.0+181019
 
