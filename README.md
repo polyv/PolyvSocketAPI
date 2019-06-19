@@ -54,6 +54,9 @@ end
 | :---------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :------------: |
 |    4.0.3 / Xcode 9.2    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
 |   4.1.2/ Xcode 9.4.1    | [v13.2.1](http://repo.polyv.net/ios/download/socket.io/swift4.1.2_SocketIO.framework_13.2.1.zip) | [v3.0.5](http://repo.polyv.net/ios/download/starscream/swift4.1.2_Starscream.framework_3.0.5.zip) |    >= 0.4.0    |
+|   5.0/ Xcode 10.2    | [SocketIO_13.2.1&Starscream_3.0.5](http://repo.polyv.net/ios/download/socket.io/SocketIO_13.2.1&Starscream_3.0.5-Swift_5.0.zip) | 同 SocketIO 链接 |    >= 0.4.0    |
+
+
 
 ## 历史版本
 
