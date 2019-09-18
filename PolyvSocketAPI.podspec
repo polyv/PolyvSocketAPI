@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "PolyvSocketAPI"
-  s.version      = "0.6.1"
+  s.version      = "0.6.2"
   s.summary      = "Polyv iOS 直播观看、推流、聊天室相关接口"
   # s.description  = <<-DESC
                    # DESC
@@ -22,7 +22,6 @@ Pod::Spec.new do |s|
 
   # s.source_files  = "Classes", "Classes/**/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
-  s.vendored_frameworks = 'frameworks/PLVSocketAPI.framework'
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -32,6 +31,12 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Socket.IO-Client-Swift", "~>13.2.0"
+  s.subspec 'Core' do |cs|
+  	cs.vendored_frameworks = 'frameworks/PLVSocketAPI.framework'	
+  end
+
+  s.subspec 'Socket' do |ss|
+  	ss.dependency "Socket.IO-Client-Swift", "~>13.2.0"	
+  end
 
 end
