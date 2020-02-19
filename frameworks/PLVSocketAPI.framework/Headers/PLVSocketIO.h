@@ -112,11 +112,16 @@ NSString *PLVNameStringWithSocketUserState(PLVSocketUserState userState);
 /**
  初始化 SocketIO，使用 -connect 连接
 
- @param connetToken 连接 token，Socket、连麦授权接口中获取
+ @param connectToken 连接 token，Socket、连麦授权接口中获取
  @param enableLog 是否输出调试信息
  @return SocketIO 实例对象
  */
-- (instancetype)initSocketIOWithConnectToken:(NSString *)connetToken enableLog:(BOOL)enableLog;
+- (instancetype)initSocketIOWithConnectToken:(NSString *)connectToken enableLog:(BOOL)enableLog;
+
+/**
+ 初始化 SocketIO，使用 url 服务器地址
+ */
+- (instancetype)initSocketIOWithConnectToken:(NSString *)connectToken url:(NSString *)url enableLog:(BOOL)enableLog;
 
 /**
  连接 SocketIO 服务器
