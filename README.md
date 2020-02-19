@@ -73,6 +73,10 @@ end
 
 直接下载：[PLVSocketAPI_0.5.0+180912](http://repo.polyv.net/ios/download/socketAPI/PLVSocketAPI_0.6.0+181019.zip)
 
+### 0.5.1+200213
+
+- 新增初始化 socket API（设置url）
+
 ### 0.5.0+180912
 
 - 新增 “昵称设置” 事件及消息对象
