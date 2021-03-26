@@ -1,42 +1,23 @@
-#
-#  Be sure to run `pod spec lint PolyvSocketAPI.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
-
 Pod::Spec.new do |s|
   s.name         = "PolyvSocketAPI"
-  s.version      = "0.6.3"
-  s.summary      = "Polyv iOS 直播观看、推流、聊天室相关接口"
-  # s.description  = <<-DESC
-                   # DESC
+  s.version      = "0.15.0"
+  s.summary      = "Polyv iOS Socket组件；对齐 0.x BusinessSDK Socket 功能"
 
   s.homepage     = "https://github.com/polyv/PolyvSocketAPI"
   s.license      = { :type => "MIT" }
-  s.author             = { "ftao" => "fft1026@163.com" }
-  s.platform     = :ios, "8.0"
+  s.author       = { "LLH" => "luolinhao@polyv.net" }
 
   s.source       = { :git => "https://github.com/polyv/PolyvSocketAPI.git", :tag => "#{s.version}" }
-
-  # s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  # s.exclude_files = "Classes/Exclude"
-
-  # s.public_header_files = "Classes/**/*.h"
-
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
-
+  s.platform     = :ios, "8.0"
   s.requires_arc = true
 
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.subspec 'Core' do |cs|
-  	cs.vendored_frameworks = 'frameworks/PLVSocketAPI.framework'	
+	cs.vendored_frameworks = 'frameworks/PLVSocketAPI.framework'	
   end
 
   s.subspec 'Socket' do |ss|
-  	ss.dependency "Socket.IO-Client-Swift", "~>13.2.0"	
+  	ss.dependency "Socket.IO-Client-Swift", "~>14.0.0"	
   end
 
+  s.default_subspec = 'Core', 'Socket'
 end

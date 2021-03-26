@@ -1,6 +1,6 @@
 //
 //  PLVSocketIOEventDef.h
-//  PLVLiveSDK
+//  PolyvBusinessSDK
 //
 //  Created by ftao on 10/11/2017.
 //  Copyright © 2017 easefun. All rights reserved.
@@ -11,7 +11,7 @@
 /*
  1. 注明 NSDictionary、NSNumber 的表示该字段(参数)的值为 字典或 number 类型；未注明的为默认 String 类型
  2. 注明 optional 的为可选项，即可能不存在此字段；未注明的一般都为存在
- 3. 如果注释或字段和实际数据存在出入，欢迎大家通过Github或易方的技术支持进行反馈。公司官网：http://www.polyv.net/
+ 3. 如果注释或字段和实际数据存在出入，欢迎大家通过Github或易方的技术支持进行反馈。公司官网：https://www.polyv.net/
  */
 
 #define PLV_EXPORT extern
@@ -54,6 +54,13 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_LOGOUT_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_LOGOUT_uid; /* 离开人的uid */
 
 /*!
+ @constant    PLVSocketIOChatRoom_RELOGIN_EVENT
+ @abstract    当前用户id在别处重新登录
+ */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_RELOGIN_EVENT;
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_RELOGIN_channelId;
+
+/*!
  @constant    PLVSocketIOChatRoom_SET_NICK_EVENT
  @abstract    昵称设置，设置的昵称存在时间为5个小时
  */
@@ -75,6 +82,7 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_GONGGAO_EVENT;
  @abstract    公告消息，POLYV 后台聊天室管理中，发布公告的内容
  */
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_BULLETIN_EVENT;
+    PLV_EXPORT NSString *const PLVSocketIOChatRoom_BULLETIN_RemoveBulletin; /* 移除公告 */
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_BULLETIN_content; /* 公告内容 */
 
 /*!
@@ -211,7 +219,7 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_CHATROOM_CONTROL_EVENT;
 #pragma mark 聊天室问答消息
 /*!
  @constant    PLVSocketIOChatRoom_QUESTION_EVENT
- @abstract    老师在客户端发起问答，参考：http://dev.polyv.net/2016/08/clientchat/ 2.3问答功能
+ @abstract    老师在客户端发起问答，参考：https://dev.polyv.net/2016/08/clientchat/ 2.3问答功能
  */
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_QUESTION_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_QUESTION_roomId; /* NSNumber, 房间号 */
@@ -237,7 +245,7 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_ANSWER_EVENT;
 
 /*!
  @constant    PLVSocketIOChatRoom_CUSTOMER_MESSAGE_EVENT
- @abstract    自定义消息接收事件，目前只能通过后台管理员调用HTTP接口发送消息，可参考http://dev.polyv.net/2016/12/send-chat/
+ @abstract    自定义消息接收事件，目前只能通过后台管理员调用HTTP接口发送消息，可参考https://dev.polyv.net/2016/12/send-chat/
  */
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_EVENT;
     PLV_EXPORT NSString *const PLVSocketIOChatRoom_CUSTOMER_MESSAGE_roomId; /* NSNumber, 房间号 */
@@ -265,6 +273,14 @@ PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_roomId; /* NSNumber, 房
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_content; /* 回答内容 */
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_sUserId; /* 提问学生userId */
 PLV_EXPORT NSString *const PLVSocketIOChatRoom_T_ANSWER_userKey; /* NSDictionary，讲师信息，可以参看 PLVSocketIOChatRoomUserKey 字典属性内容 */
+
+
+#pragma mark 奖杯消息
+/*!
+ @constant    PLVSocketIOChatRoom_SEND_CUP_EVENT
+ @abstract    奖杯事件
+ */
+PLV_EXPORT NSString *const PLVSocketIOChatRoom_SEND_CUP_EVENT;
 
 #pragma mark - 连麦事件键集合
 
@@ -311,7 +327,7 @@ PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_RESPONSE_key;
 
 /*!
  @constant    PLVSocketIOLinkMic_JOIN_SUCCESS_key
- @abstract    加入声网成功事件消息
+ @abstract    加入连麦频道成功事件消息
  */
 PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_SUCCESS_key;
     PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_SUCCESS_roomId; /* NSNumber, 房间号 */
@@ -325,6 +341,42 @@ PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_SUCCESS_key;
 PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_LEAVE_key;
     PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_LEAVE_roomId; /* NSNumber, 房间号 */
     PLV_EXPORT NSString *const PLVSocketIOLinkMic_JOIN_LEAVE_userKey; /* NSDictionary, 等同 PLVSocketIOLinkMicUserkey，学员信息 */
+
+/*!
+ @constant    PLVSocketLinkMicEventType_TEACHER_INFO_key
+ @abstract    连麦讲师信息事件
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_TEACHER_INFO_key;
+
+/*!
+ @constant    PLVSocketLinkMicEventType_MuteUserMedia_key
+ @abstract    连麦讲师关闭连麦人的摄像头或麦克风
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_MuteUserMedia_key;
+
+/*!
+ @constant    PLVSocketLinkMicEventType_SwitchView_key
+ @abstract    连麦讲师切换连麦人的主副屏位置
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_SwitchView_key;
+
+/*!
+ @constant    PLVSocketLinkMicEventType_TEACHER_SET_PERMISSION_key
+ @abstract    讲师设置连麦者的权限
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_TEACHER_SET_PERMISSION_key;
+
+/*!
+ @constant    PLVSocketLinkMicEventType_changeVideoAndPPTPosition_key
+ @abstract    讲师主动切换PPT和播放器的位置
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_changeVideoAndPPTPosition_key;
+
+/*!
+ @constant    PLVSocketLinkMicEventType_switchJoinVoice_key
+ @abstract    允许某人上麦
+ */
+PLV_EXPORT NSString *const PLVSocketLinkMicEventType_switchJoinVoice_key;
 
 #pragma mark - 云课堂事件键集合
 
@@ -366,6 +418,36 @@ PLV_EXPORT NSString *const PLVSocketIOPPT_onSliceDraw_key;
 PLV_EXPORT NSString *const PLVSocketIOPPT_onSliceControl_key;
     PLV_EXPORT NSString *const PLVSocketIOPPT_onSliceControl_data;  /* NSDictionary */
 
+#pragma mark - 图文直播事件键集合
+
+/*!
+ @constant    PLVSocketIOTuwen_Create_key
+ @abstract    聊天室消息，收到新的图文触发
+ */
+PLV_EXPORT NSString *const PLVSocketIOTuwen_Create_key;
+    PLV_EXPORT NSString *const PLVSocketIOTuwen_Create_data; /* NSDictionary */
+
+/*!
+ @constant    PLVSocketIOTuwen_Delete_key
+ @abstract    聊天室消息，删除图文
+ */
+PLV_EXPORT NSString *const PLVSocketIOTuwen_Delete_key;
+    PLV_EXPORT NSString *const PLVSocketIOTuwen_Delete_data; /* NSDictionary */
+
+/*!
+ @constant    PLVSocketIOTuwen_Settop_key
+ @abstract    聊天室消息，置顶图文
+ */
+PLV_EXPORT NSString *const PLVSocketIOTuwen_Settop_key;
+    PLV_EXPORT NSString *const PLVSocketIOTuwen_Settop_data; /* NSDictionary */
+
+/*!
+ @constant    PLVSocketIOTuwen_Edit_key
+ @abstract    聊天室消息，编辑现有图文
+ */
+PLV_EXPORT NSString *const PLVSocketIOTuwen_Edit_key;
+    PLV_EXPORT NSString *const PLVSocketIOTuwen_Edit_data; /* NSDictionary */
+
 #pragma mark - 互动课堂事件键集合
 
 /*!
@@ -400,13 +482,48 @@ PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_key;
     PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_isMuted; /* BOOL: true(静音/下麦)、false(恢复静音/上麦) */
     PLV_EXPORT NSString *const PLVSocketIOClass_onClassControl_userId; /* Optional, 学员id */
 
-#pragma mark - 答题卡事件键集合
+#pragma mark - H5互动消息事件键集合
+
+#pragma mark 答题卡事件键集合
 /*!
- @constant    PLVSocketIOClass_onTriviaCard_key
+ @constant    PLVSocketInteraction_onTriviaCard_key
  @abstract    答题卡事件
  */
-PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_key;
-    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionContent;
-    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_questionResult;
-    PLV_EXPORT NSString *const PLVSocketIOClass_onTriviaCard_about;
+PLV_EXPORT NSString *const PLVSocketInteraction_onTriviaCard_key;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onTriviaCard_questionContent;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onTriviaCard_questionResult;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onTriviaCard_about;
 
+#pragma mark 问卷事件键集合
+/*!
+ @constant    PLVSocketInteraction_onQuestionnaire_key
+ @abstract    问卷事件
+ */
+PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_key;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_start;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_stop;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_sendResult;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_achievement;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onQuestionnaire_about;
+
+#pragma mark 抽奖事件键集合
+/*!
+ @constant    PLVSocketInteraction_onLottery_key
+ @abstract    抽奖事件
+ */
+PLV_EXPORT NSString *const PLVSocketInteraction_onLottery_key;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onLottery_start;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onLottery_stop;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onLottery;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onLottery_winner;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onLottery_about;
+
+#pragma mark 签到事件键集合
+/*!
+ @constant    PLVSocketInteraction_onSignIn_key
+ @abstract    签到事件
+ */
+PLV_EXPORT NSString *const PLVSocketInteraction_onSignIn_key;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onSignIn_start;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onSignIn_stop;
+    PLV_EXPORT NSString *const PLVSocketInteraction_onSignIn_about;
